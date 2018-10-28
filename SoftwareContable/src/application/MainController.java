@@ -69,5 +69,85 @@ public class MainController {
 	@FXML
 	private Button agregar;
 	
+	@FXML
+	private Button iniciar;
 	
+	@FXML
+	private TextField txtNombreEmpresa;
+	
+	@FXML
+	private TextField txtPeriodo;
+	
+	@FXML
+	private RadioButton rbBalanceGeneral;
+	
+	@FXML
+	private RadioButton rbEstadoResultados;
+	
+	@FXML
+	private ToggleGroup tipoInforme;
+	
+	@FXML
+	private Pane panelInicio;
+	
+	@FXML
+	private Pane panelBalanceGeneral;
+	
+	@FXML
+	private Pane panelEstadoResultados;
+	
+	@FXML
+	private TextField txtVentas;
+	
+	@FXML
+	private TextField txtCostoVentas;
+	
+	@FXML
+	private TextField txtUBruta;
+	
+	@FXML
+	private TextField txtGOperacionales;
+	
+	@FXML
+	private TextField txtUOperacional;
+	
+	@FXML
+	private TextField txtOIngresos;
+	
+	@FXML
+	private TextField txtOIngresosFinancieros;
+	
+	@FXML
+	private TextField txtUAntesImp;
+	
+	@FXML
+	private TextField txtImpRenta;
+	
+	@FXML
+	private TextField txtUDespuesImp;
+	
+	@FXML
+	private TextField txtReservas;
+	
+	@FXML
+	private TextField txtUNeta;
+	
+	@FXML
+	private TextField txtPorImpRenta;
+	
+	@FXML
+	private TextField txtPorReservas;
+	
+	@FXML
+	private TextField txtRentaNeta;
+	
+	@FXML
+	private TextField txtRentaBruta;
+	
+	@FXML
+	private TextField txtEndeudamiento;
+	
+	public void initilize() {
+		
+	}
 }

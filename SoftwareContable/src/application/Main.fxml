@@ -4,8 +4,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -18,7 +20,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Pane fx:id="panelInicio" prefHeight="503.0" prefWidth="858.0">
+      <Pane fx:id="panelBalanceGeneral" prefHeight="503.0" prefWidth="858.0" visible="false">
          <children>
             <GridPane prefHeight="503.0" prefWidth="483.0">
               <columnConstraints>
@@ -279,6 +281,112 @@
                   <Button fx:id="agregar" layoutX="151.0" layoutY="203.0" mnemonicParsing="false" text="Agregar" />
                </children>
             </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="panelInicio" prefHeight="503.0" prefWidth="858.0">
+         <children>
+            <Label layoutX="220.0" layoutY="59.0" text="Software Contable">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="248.0" layoutY="187.0" text="Nombre de la emresa:" />
+            <Label layoutX="247.0" layoutY="224.0" text="Periodo a contabilizar:" />
+            <TextField fx:id="txtNombreEmpresa" layoutX="382.0" layoutY="183.0" />
+            <TextField fx:id="txtPeriodo" layoutX="382.0" layoutY="220.0" />
+            <RadioButton fx:id="rbBalanceGeneral" layoutX="321.0" layoutY="288.0" mnemonicParsing="false" text="Balance General">
+               <toggleGroup>
+                  <ToggleGroup fx:id="tipoInforme" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rbEstadoResultados" layoutX="456.0" layoutY="288.0" mnemonicParsing="false" text="Estado de Resultados" toggleGroup="$tipoInforme" />
+            <Button fx:id="iniciar" layoutX="415.0" layoutY="329.0" mnemonicParsing="false" text="Iniciar" />
+         </children>
+      </Pane>
+      <Pane fx:id="panelEstadoResultados" prefHeight="503.0" prefWidth="858.0" visible="false">
+         <children>
+            <GridPane layoutX="200.0" layoutY="81.0" prefHeight="395.0" prefWidth="286.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="183.20001220703125" minWidth="10.0" prefWidth="169.5999755859375" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.20001220703125" minWidth="10.0" prefWidth="30.4000244140625" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="10">
+                     <children>
+                        <Label text="Reservas:" />
+                        <TextField fx:id="txtPorReservas" prefHeight="26.0" prefWidth="39.0" promptText="\%" />
+                     </children>
+                  </HBox>
+                  <Label text="Ventas:" />
+                  <Label text="Costo de Venta:" GridPane.rowIndex="1" />
+                  <Label text="Utilidad Neta:" GridPane.rowIndex="11" />
+                  <Label text="Utilidad Bruta:" GridPane.rowIndex="2" />
+                  <Label text="Gastos Operacionales:" GridPane.rowIndex="3" />
+                  <Label text="Utilidad Operacional:" GridPane.rowIndex="4" />
+                  <Label text="Otros Ingresos (Financieros):" GridPane.rowIndex="6" />
+                  <Label text="Otros Ingresos" GridPane.rowIndex="5" />
+                  <Label text="Utilidad Antes de Impuestos:" GridPane.rowIndex="7" />
+                  <Label text="Utilidad después de Impuesto:" GridPane.rowIndex="9" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.rowIndex="8">
+                     <children>
+                        <Label text="Impuestos de Renta:" />
+                        <TextField fx:id="txtPorImpRenta" prefHeight="26.0" prefWidth="39.0" promptText="\%" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txtVentas" promptText="\$" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtCostoVentas" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtUBruta" editable="false" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtGOperacionales" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="txtUOperacional" editable="false" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtOIngresos" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="txtOIngresosFinancieros" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="txtUAntesImp" editable="false" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="txtImpRenta" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField fx:id="txtUDespuesImp" editable="false" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <TextField fx:id="txtReservas" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <TextField fx:id="txtUNeta" editable="false" promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="537.0" layoutY="189.0" prefHeight="138.0" prefWidth="242.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.39996337890625" minWidth="10.0" prefWidth="144.199951171875" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.20001220703125" minWidth="10.0" prefWidth="97.800048828125" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Rentabilidad Neta:" />
+                  <Label text="Rentabilidad Bruta:" GridPane.rowIndex="1" />
+                  <Label text="Endeudamiento:" GridPane.rowIndex="2" />
+                  <Label text="Rentabilidad de Inversión:" GridPane.rowIndex="3" />
+                  <TextField promptText="\$" GridPane.columnIndex="1" />
+                  <TextField promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField promptText="\$" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
          </children>
       </Pane>
    </children>
