@@ -11,19 +11,31 @@ import java.util.Hashtable;
 
 public class Logic implements Serializable {
 	
-	public static final String A="Activo";
-	public static final String PS="Pasivo";
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public static final String AC="Activo";
+	public static final String ANC="Activo";
+	
+	public static final String PSC="Pasivo";
+	public static final String PSNC="Pasivo";
 	public static final String PT="Patrimonio";
 	public static final String G="Gasto";
 	public static final String I="Ingreso";
 	
 	private Hashtable<String,String> diccionario;
 	
-	private double cuentaPorPagar=0;
-	private double cuentaPorCobrar=0;
-	private double patrimonio=0;
-	private double ingreso=0;
-	private double gasto=0;
+	
+	private double activoCorriente;
+	private double activoNoCorriente;
+	private double pasivoCorriente;
+	private double pasivoNoCorriente;
+
+	private double patrimonio;
+	private double ingreso;
+	private double gasto;
 
 	public Logic() {
 		// TODO Auto-generated constructor stub
@@ -33,10 +45,15 @@ public class Logic implements Serializable {
 	}
 	
 	public void asignarCuentaBalanceGeneral(String tipo, double valor) {
-		if(diccionario.get(tipo).equalsIgnoreCase(A)) {
-			cuentaPorCobrar+=valor;
-		}else if(diccionario.get(tipo).equalsIgnoreCase(PS)) {
-			cuentaPorPagar+=valor;
+		
+		if(diccionario.get(tipo).equalsIgnoreCase(AC)) {
+			activoCorriente+=valor;
+		}else if(diccionario.get(tipo).equalsIgnoreCase(ANC)) {
+			activoNoCorriente+=valor;
+		}else if(diccionario.get(tipo).equalsIgnoreCase(PSC)) {
+			pasivoCorriente+=valor;
+		}else if(diccionario.get(tipo).equalsIgnoreCase(PSNC)) {
+			pasivoNoCorriente+=valor;
 		}else if(diccionario.get(tipo).equalsIgnoreCase(PT)) {
 			patrimonio+=valor;
 		}else if(diccionario.get(tipo).equalsIgnoreCase(G)) {
@@ -45,14 +62,13 @@ public class Logic implements Serializable {
 			ingreso+=valor;
 		}
 		
-		
-		
 	}
 	
 	
 	public double calcularUtilidad() {
 		
 		double utilidad=ingreso-gasto;
+		
 		return utilidad;
 	}
 	
